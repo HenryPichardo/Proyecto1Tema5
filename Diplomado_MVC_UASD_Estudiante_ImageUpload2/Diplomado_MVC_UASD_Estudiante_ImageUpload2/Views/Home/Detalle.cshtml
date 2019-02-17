@@ -1,0 +1,74 @@
+﻿
+@{
+    ViewBag.Title = "Detalle";
+}
+
+<head>
+    <style>
+        .linkbtnfull {
+            background-color: blue;
+            color: white;
+            font-size: medium;
+            padding: 14px 25px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        table {
+            font-family: Arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: yellow;
+        }
+    </style>
+</head>
+@{
+    EstudianteDB2Entities db = new EstudianteDB2Entities();
+}
+<body>
+    <h2 style="background-color: forestgreen;color:goldenrod;text-align:center;font-style:oblique">
+        Detalle de Estudiantes
+    </h2>
+    @using (Html.BeginForm())
+    {
+        <div class="well">
+            <table align="center" border="1" cellpadding="4" cellspacing="4">
+                <thead>
+                    <tr>
+                        <th style="background-color:yellow;color:blue">Foto</th>
+                        <th style="background-color:black;color:white">Nombres</th>
+                        <th style="background-color:lightsalmon;color:white">Apellidos</th>
+                        <th style="background-color:lawngreen;color:white">Direccion</th>
+                        <th style="background-color:goldenrod;color:white">Telefono</th>
+                        <th style="background-color:forestgreen;color:white">Cedula</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in db.tblEstudiante2)
+                    {
+                        <tr>
+                            <td>
+                                <img src="~/Images/@item.ImageUrl" class="img-circle" alt="kulu" width="100" height="70" />
+                            </td>
+                            <td>@item.Nombres</td>
+                            <td>@item.Apellidos</td>
+                            <td>@item.Direccion</td>
+                            <td>@item.Telefono</td>
+                            <td>@item.Cedula</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+</body>

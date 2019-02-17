@@ -1,0 +1,81 @@
+﻿@model Diplomado_MVC_UASD_Estudiante_ImageUpload2.tblEstudiante2
+@{
+    ViewBag.Title = "Estudiantes";
+}
+
+<head>
+    <style>
+        .linkbtnfull {
+            background-color: cadetblue;
+            color: white;
+            font-size: medium;
+            padding: 14px 25px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        table {
+            font-family: Arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: gold;
+        }
+    </style>
+</head>
+@using (Html.BeginForm("FileUpload", "Home", FormMethod.Post,
+        new { Enctype = "multipart/form-data" }))
+{
+    <table>
+        <tbody>
+            <tr>
+                <td style="text-align:center;background-color:dodgerblue;color:goldenrod;font-family:Arial;font-style:oblique;font-size:x-large">
+                    Registro de Estudiante
+                </td>
+            </tr>
+            <tr>
+                <td> @Html.TextBox("Nombres", "", new { placeholder = "Digite su nombre..." }) 
+                @Html.ValidationMessageFor(model => model.Nombres)</td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.TextBox("Apellidos", "", new { placeholder = "Digite su Apellido..." })
+                    @Html.ValidationMessageFor(model => model.Apellidos) </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.TextBox("Direccion", "", new { placeholder = "Digite su Direccion..." })
+                    @Html.ValidationMessageFor(model => model.Direccion)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.TextBox("Telefono", "", new { placeholder = "Digite su Telefono..." })
+                    @Html.ValidationMessageFor(model => model.Telefono)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.TextBox("Cedula", "", new { placeholder = "Digite su Cedula..." })
+                    @Html.ValidationMessageFor(model => model.Cedula)
+                </td>
+            </tr>
+            <tr>
+                <td> <input type="file" name="file" id="file" class="btn btn-primary" /> </td>
+            </tr>
+            <tr>
+                <td> <input class="btn btn-primary" type="submit" value="Guardar"> </td>
+            </tr>
+
+        </tbody>
+    </table>
+}
